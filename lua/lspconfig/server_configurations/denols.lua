@@ -18,6 +18,10 @@ local function virtual_text_document_handler(uri, result)
   end
 
   for client_id, res in pairs(result) do
+    if res.result == nil then
+      break
+    end
+    
     local lines = vim.split(res.result, '\n')
     local bufnr = vim.uri_to_bufnr(uri)
 
